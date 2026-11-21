@@ -1,0 +1,779 @@
+// ============================================================================
+// Ares Design System Specification
+// Based on dope-design.md tokens (Colors, Typography, Spacing, Radii, Elevation, Components)
+// Brand Authority: Ares (DTC Storefront & Live Admin Control Plane)
+// ============================================================================
+
+// ----------------------------------------------------------------------------
+// 1. SCSS Variables (Direct SASS compilation & math)
+// ----------------------------------------------------------------------------
+
+// Colors: Brand & Accent
+$color-primary: #024ad8;
+$color-primary-bright: #296ef9;
+$color-primary-deep: #0e3191;
+$color-primary-soft: #c9e0fc;
+$color-on-primary: #ffffff;
+
+// Colors: Text & Ink
+$color-ink: #1a1a1a;
+$color-ink-deep: #000000;
+$color-ink-soft: #292929;
+$color-on-ink: #ffffff;
+$color-charcoal: #3d3d3d;
+$color-graphite: #636363;
+
+// Colors: Surfaces & Neutrals
+$color-canvas: #ffffff;
+$color-paper: #ffffff;
+$color-cloud: #f7f7f7;
+$color-fog: #e8e8e8;
+$color-steel: #c2c2c2;
+$color-hairline: #e8e8e8;
+$color-hairline-strong: #c2c2c2;
+
+// Colors: Links
+$color-link: #024ad8;
+$color-link-pressed: #0e3191;
+
+// Colors: Semantic Accents
+$color-bloom-coral: #ff5050;
+$color-bloom-rose: #f9d4d2;
+$color-bloom-deep: #b3262b;
+$color-bloom-wine: #5a1313;
+$color-storm-mist: #8ebdce;
+$color-storm-sea: #7fadbe;
+$color-storm-deep: #356373;
+$color-error: #b3262b;
+
+// Spacing Scale
+$spacing-xxs: 4px;
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 20px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+$spacing-section: 80px;
+
+// Border Radii Scale
+$radius-none: 0px;
+$radius-xs: 2px;
+$radius-sm: 3px;
+$radius-md: 4px;
+$radius-lg: 8px;
+$radius-xl: 16px;
+$radius-pill: 9999px;
+$radius-full: 9999px;
+
+// Elevation Shadows
+$elevation-0: none;
+$elevation-1: 1px solid #e8e8e8;
+$elevation-2: 0 2px 8px rgba(26, 26, 26, 0.08);
+$elevation-3: 0 8px 24px rgba(26, 26, 26, 0.12);
+
+// Font Family (Forma DJR Micro with Manrope / Inter open-source fallbacks)
+$font-family-primary: 'Forma DJR Micro', 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+// ----------------------------------------------------------------------------
+// 2. CSS Custom Properties (:root)
+// ----------------------------------------------------------------------------
+:root {
+  // Colors
+  --color-primary: #{$color-primary};
+  --color-primary-bright: #{$color-primary-bright};
+  --color-primary-deep: #{$color-primary-deep};
+  --color-primary-soft: #{$color-primary-soft};
+  --color-on-primary: #{$color-on-primary};
+
+  --color-ink: #{$color-ink};
+  --color-ink-deep: #{$color-ink-deep};
+  --color-ink-soft: #{$color-ink-soft};
+  --color-on-ink: #{$color-on-ink};
+  --color-charcoal: #{$color-charcoal};
+  --color-graphite: #{$color-graphite};
+
+  --color-canvas: #{$color-canvas};
+  --color-paper: #{$color-paper};
+  --color-cloud: #{$color-cloud};
+  --color-fog: #{$color-fog};
+  --color-steel: #{$color-steel};
+  --color-hairline: #{$color-hairline};
+  --color-hairline-strong: #{$color-hairline-strong};
+
+  --color-link: #{$color-link};
+  --color-link-pressed: #{$color-link-pressed};
+
+  --color-bloom-coral: #{$color-bloom-coral};
+  --color-bloom-rose: #{$color-bloom-rose};
+  --color-bloom-deep: #{$color-bloom-deep};
+  --color-bloom-wine: #{$color-bloom-wine};
+
+  --color-storm-mist: #{$color-storm-mist};
+  --color-storm-sea: #{$color-storm-sea};
+  --color-storm-deep: #{$color-storm-deep};
+  --color-error: #{$color-error};
+
+  // Spacing
+  --spacing-xxs: #{$spacing-xxs};
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+  --spacing-xxl: #{$spacing-xxl};
+  --spacing-section: #{$spacing-section};
+
+  // Radius
+  --radius-none: #{$radius-none};
+  --radius-xs: #{$radius-xs};
+  --radius-sm: #{$radius-sm};
+  --radius-md: #{$radius-md};
+  --radius-lg: #{$radius-lg};
+  --radius-xl: #{$radius-xl};
+  --radius-pill: #{$radius-pill};
+  --radius-full: #{$radius-full};
+
+  // Elevation
+  --elevation-0: #{$elevation-0};
+  --elevation-1: #{$elevation-1};
+  --elevation-2: #{$elevation-2};
+  --elevation-3: #{$elevation-3};
+
+  // Fonts
+  --font-family-primary: #{$font-family-primary};
+}
+
+// ----------------------------------------------------------------------------
+// 3. Typography Utility Classes & Mixins
+// ----------------------------------------------------------------------------
+
+@mixin typography-display-xxl {
+  font-family: var(--font-family-primary);
+  font-size: 72px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
+}
+
+@mixin typography-display-xl {
+  font-family: var(--font-family-primary);
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
+}
+
+@mixin typography-display-lg {
+  font-family: var(--font-family-primary);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
+}
+
+@mixin typography-display-md {
+  font-family: var(--font-family-primary);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
+}
+
+@mixin typography-display-sm {
+  font-family: var(--font-family-primary);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: 0;
+}
+
+@mixin typography-display-xs {
+  font-family: var(--font-family-primary);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.0;
+  letter-spacing: 0;
+}
+
+@mixin typography-body-lg {
+  font-family: var(--font-family-primary);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+
+@mixin typography-body-md {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: 0;
+}
+
+@mixin typography-body-emphasis {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+}
+
+@mixin typography-caption-md {
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+@mixin typography-caption-bold {
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+}
+
+@mixin typography-caption-sm {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0;
+}
+
+@mixin typography-link-md {
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.38;
+  letter-spacing: 0;
+}
+
+@mixin typography-button-md {
+  font-family: var(--font-family-primary);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+@mixin typography-button-sm {
+  font-family: var(--font-family-primary);
+  font-size: 12.6px;
+  font-weight: 700;
+  line-height: 1.0;
+  letter-spacing: 0.126px;
+}
+
+@mixin typography-price-md {
+  font-family: var(--font-family-primary);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.17;
+  letter-spacing: 0;
+}
+
+// Typography Classes
+.font-display-xxl   { @include typography-display-xxl; }
+.font-display-xl    { @include typography-display-xl; }
+.font-display-lg    { @include typography-display-lg; }
+.font-display-md    { @include typography-display-md; }
+.font-display-sm    { @include typography-display-sm; }
+.font-display-xs    { @include typography-display-xs; }
+.font-body-lg       { @include typography-body-lg; }
+.font-body-md       { @include typography-body-md; }
+.font-body-emphasis { @include typography-body-emphasis; }
+.font-caption-md    { @include typography-caption-md; }
+.font-caption-bold  { @include typography-caption-bold; }
+.font-caption-sm    { @include typography-caption-sm; }
+.font-link-md       { @include typography-link-md; }
+.font-button-md     { @include typography-button-md; }
+.font-button-sm     { @include typography-button-sm; }
+.font-price-md      { @include typography-price-md; }
+
+// Color Text Utilities
+.text-primary       { color: var(--color-primary); }
+.text-primary-bright{ color: var(--color-primary-bright); }
+.text-primary-deep  { color: var(--color-primary-deep); }
+.text-ink           { color: var(--color-ink); }
+.text-ink-soft      { color: var(--color-ink-soft); }
+.text-on-primary    { color: var(--color-on-primary); }
+.text-on-ink        { color: var(--color-on-ink); }
+.text-charcoal      { color: var(--color-charcoal); }
+.text-graphite      { color: var(--color-graphite); }
+.text-steel         { color: var(--color-steel); }
+.text-error         { color: var(--color-error); }
+.text-coral         { color: var(--color-bloom-coral); }
+
+// ----------------------------------------------------------------------------
+// 4. Surface Classes (surface-canvas, surface-cloud, surface-ink, surface-fog)
+// ----------------------------------------------------------------------------
+
+.surface-canvas {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+}
+
+.surface-cloud {
+  background-color: var(--color-cloud);
+  color: var(--color-ink);
+}
+
+.surface-ink {
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+}
+
+.surface-fog {
+  background-color: var(--color-fog);
+  color: var(--color-ink);
+}
+
+.surface-paper {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
+
+// ----------------------------------------------------------------------------
+// 5. Button Classes (button-primary, button-outline, button-ink)
+// ----------------------------------------------------------------------------
+
+.button-primary {
+  @include typography-button-md;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-md); // 4px
+  padding: 12px 24px;
+  height: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--color-primary-bright);
+    color: var(--color-on-primary);
+    text-decoration: none;
+  }
+
+  &:active,
+  &.button-primary-pressed {
+    background-color: var(--color-primary-deep);
+    transform: translateY(1px);
+  }
+
+  &:disabled,
+  &[disabled],
+  &.button-primary-disabled {
+    background-color: var(--color-steel);
+    color: var(--color-on-primary);
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+  }
+}
+
+.button-outline {
+  @include typography-button-md;
+  background-color: var(--color-canvas);
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md); // 4px
+  padding: 12px 24px;
+  height: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-deep);
+    border-color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: #b7d6fb;
+    border-color: var(--color-primary-deep);
+    color: var(--color-primary-deep);
+  }
+
+  &:disabled,
+  &[disabled] {
+    border-color: var(--color-steel);
+    color: var(--color-steel);
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.button-ink {
+  @include typography-button-md;
+  background-color: var(--color-ink);
+  color: var(--color-on-primary);
+  border: none;
+  border-radius: var(--radius-md); // 4px
+  padding: 12px 24px;
+  height: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, transform 0.05s ease;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: #333333;
+    color: var(--color-on-primary);
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: var(--color-ink-deep);
+    transform: translateY(1px);
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: var(--color-steel);
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+  }
+}
+
+.button-outline-ink {
+  @include typography-button-md;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-md);
+  padding: 12px 24px;
+  height: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background-color: var(--color-cloud);
+    text-decoration: none;
+  }
+
+  &:active {
+    background-color: var(--color-fog);
+  }
+}
+
+.button-text-link {
+  @include typography-link-md;
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+  padding: 4px 0;
+  cursor: pointer;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+
+  &:hover {
+    color: var(--color-primary-deep);
+  }
+}
+
+.button-sm {
+  @include typography-button-sm;
+  height: 32px;
+  min-height: 32px;
+  padding: 6px 14px;
+}
+
+// ----------------------------------------------------------------------------
+// 6. Card & Container Classes (card-product, hero-promo-card)
+// ----------------------------------------------------------------------------
+
+.card-product {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border-radius: var(--radius-xl); // 16px
+  padding: var(--spacing-xl); // 24px
+  box-shadow: var(--elevation-2); // 0 2px 8px rgba(26, 26, 26, 0.08)
+  border: 1px solid var(--color-hairline);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
+  transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 4px 14px rgba(26, 26, 26, 0.12);
+    transform: translateY(-2px);
+    border-color: var(--color-hairline-strong);
+  }
+}
+
+.hero-promo-card {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border-radius: var(--radius-xl); // 16px
+  padding: var(--spacing-xxl); // 32px
+  box-shadow: var(--elevation-2);
+  border: 1px solid var(--color-hairline);
+  position: relative;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.card-product-feature {
+  background-color: var(--color-cloud);
+  color: var(--color-ink);
+  border-radius: var(--radius-xl); // 16px
+  padding: var(--spacing-xxl); // 32px
+  box-sizing: border-box;
+}
+
+.card-pricing-tier {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xl);
+  box-shadow: var(--elevation-2);
+  border: 1px solid var(--color-hairline);
+  box-sizing: border-box;
+
+  &.card-pricing-tier-featured {
+    border-top: 3px solid var(--color-primary);
+  }
+}
+
+.card-customer-story {
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-md);
+  box-shadow: var(--elevation-2);
+  border: 1px solid var(--color-hairline);
+  box-sizing: border-box;
+}
+
+.promo-strip-dark {
+  background-color: var(--color-ink);
+  color: var(--color-on-ink);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-xxl) 48px;
+  box-sizing: border-box;
+}
+
+// ----------------------------------------------------------------------------
+// 7. Inputs & Form Controls
+// ----------------------------------------------------------------------------
+
+.text-input {
+  @include typography-body-md;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border: 1px solid var(--color-steel);
+  border-radius: var(--radius-md); // 4px
+  padding: 12px 16px;
+  height: 44px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s ease;
+
+  &::placeholder {
+    color: var(--color-graphite);
+  }
+
+  &:focus,
+  &.text-input-focused {
+    border-color: var(--color-ink);
+  }
+
+  &:disabled {
+    background-color: var(--color-cloud);
+    border-color: var(--color-hairline);
+    cursor: not-allowed;
+  }
+}
+
+.text-input-search {
+  @include typography-body-md;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border: 1px solid var(--color-steel);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
+  height: 40px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color 0.15s ease;
+
+  &:focus {
+    border-color: var(--color-ink);
+  }
+}
+
+// ----------------------------------------------------------------------------
+// 8. Badges, Pills & Status Indicators
+// ----------------------------------------------------------------------------
+
+.badge-pill-ink {
+  @include typography-caption-bold;
+  background-color: var(--color-ink);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-lg); // 8px
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge-pill-outline {
+  @include typography-caption-bold;
+  background-color: var(--color-canvas);
+  color: var(--color-ink);
+  border: 1px solid var(--color-ink);
+  border-radius: var(--radius-lg); // 8px
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.badge-sale-coral {
+  @include typography-caption-bold;
+  background-color: var(--color-bloom-coral);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-sm); // 3px
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+}
+
+.badge-limited-drop {
+  @include typography-caption-bold;
+  background-color: var(--color-primary);
+  color: var(--color-on-primary);
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  letter-spacing: 0.5px;
+}
+
+.badge-status {
+  @include typography-caption-bold;
+  border-radius: var(--radius-sm);
+  padding: 4px 8px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  &.status-pending  { background-color: #fff3cd; color: #856404; }
+  &.status-packed   { background-color: #d1ecf1; color: #0c5460; }
+  &.status-shipped  { background-color: #d4edda; color: #155724; }
+  &.status-canceled { background-color: #f8d7da; color: #721c24; }
+}
+
+// ----------------------------------------------------------------------------
+// 9. Signature Decorative Elements & Layout Utilities
+// ----------------------------------------------------------------------------
+
+// Angular Blue Chevron Slash Motif (Geometric echo)
+.chevron-decoration {
+  background-color: var(--color-primary);
+  border-radius: var(--radius-none);
+  width: 24px;
+  height: 100%;
+  transform: skewX(-20deg);
+  display: block;
+}
+
+.chevron-decoration-pair {
+  display: flex;
+  gap: 8px;
+  height: 100%;
+}
+
+// Standard Ares Container
+.container-ares {
+  max-width: 1366px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--spacing-xl);
+  padding-right: var(--spacing-xl);
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+  }
+}
+
+// Full-bleed section band wrapper with 80px rhythm
+.section-band {
+  padding-top: var(--spacing-section);
+  padding-bottom: var(--spacing-section);
+  width: 100%;
+  box-sizing: border-box;
+
+  @media (max-width: 768px) {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+// Catalog Grid (Responsive 4 -> 3 -> 2 -> 1 columns)
+.grid-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-xl);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}

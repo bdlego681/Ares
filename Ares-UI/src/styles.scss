@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+/* ==========================================================================
+   Ares Global Styles & Design System Integration
+   ========================================================================== */
+
+@use './styles/design-system' as *;
+
+/* CSS Reset & Global Layout */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  color: var(--color-ink);
+  background-color: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Base Link Styles */
+a {
+  color: var(--color-link);
+  text-decoration: none;
+  transition: color 0.15s ease;
+
+  &:hover {
+    color: var(--color-link-pressed);
+  }
+}
+
+/* Headings Default */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--color-ink);
+}
+
+/* Images & Media */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form Reset */
+input, button, textarea, select {
+  font: inherit;
+}
